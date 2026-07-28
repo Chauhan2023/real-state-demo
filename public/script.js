@@ -71,7 +71,10 @@ window.addEventListener('load', () => {
             opacity: 0,
             y: 40,
             duration: 0.9,
-            ease: 'power3.out'
+            ease: 'power3.out',
+            onComplete: () => {
+                ScrollTrigger.refresh();
+            }
         }, "-=0.5");
 });
 
@@ -230,16 +233,17 @@ gsap.from('.amenity-card', {
 });
 
 // Calendar Days Cascade
-gsap.from('.cal-day', {
+gsap.from('.cal-day:not(.empty)', {
     scrollTrigger: {
         trigger: '.calendar-box',
-        start: 'top 80%'
+        start: 'top 90%'
     },
     opacity: 0,
     scale: 0.7,
     duration: 0.4,
     stagger: 0.02,
-    ease: 'back.out(1.5)'
+    ease: 'back.out(1.5)',
+    clearProps: 'opacity,transform'
 });
 
 
